@@ -27,6 +27,7 @@ const ActivityEnglish = () => {
     return (
         <div className='bg-[#c6d3af] pb-10'>
             <p className='text-3xl 2xl:text-5xl text-black font-semibold text-center py-5 xl:pt-16'>Activities</p>
+
             {/* <!-- ===========ACTIVITY START========= --> */}
             <div className="rounded-xl w-full lg:w-3/4 h-auto lg:h-auto mx-auto flex align-middle bg-[#c6d3af]">
                     <div className='mx-5 md:mx-auto mt-5 md:flex md:w-3/4 p-3 rounded-xl bg-[#819683]'>
@@ -35,7 +36,7 @@ const ActivityEnglish = () => {
                             alt="images 3"
                             className="md:w-1/2 xl:w-1/3 mx-auto object-cover"
                         /> :
-                        <iframe width="560" height="315" className='md:w-1/2 xl:w-1/3 mx-auto' src={`https://www.youtube.com/embed/${link}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>}
+                        <div className='md:w-1/2 xl:w-1/3 mx-auto'><iframe className='w-full' src={`https://www.youtube.com/embed/${link}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe></div>}
                         <p className='md:border-l-4 border-[#c6d3af] text-bold text-lg lg:text-xl xl:text-2xl lg:ml-10 text-white text-center px-5 py-5 my-auto'>{activity.activityName}</p>
                     </div>
 

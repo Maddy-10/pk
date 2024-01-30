@@ -16,6 +16,7 @@ const UpdateActivity = () => {
   const [activityVideo, setActivityVideo] = useState('');
   const [error, setError] = useState('');
   const [load, setLoad] = useState(false);
+  const [block,setBlock]=useState(false);
 
   // Function to handle form submission
   const addActivity = async (e) => {
@@ -31,19 +32,22 @@ const UpdateActivity = () => {
 
     // Check the result and update state accordingly
     if (result.success) {
-      setLoad(true);
-      setActivityName('');
+      setLoad(true);      
+      setTimeout(() => {
+        setLoad(false);
+        setActivityName('');
       setActivityVideo('');
       setActivityImage(null);
       setError('');
+        navigate('/admin/panel')
+      }, 3000);
     } else {
       setError(result.message);
+      setBlock(false);
     }
 
     // Reset loading state after 5 seconds
-    setTimeout(() => {
-      setLoad(false);
-    }, 5000);
+    
   };
 
   // Function to handle image file selection
@@ -137,9 +141,11 @@ const UpdateActivity = () => {
             {error && <span className='mt-4 mx-2 text-red-500'>{error}</span>}
 
             {/* Submit button */}
-            <button disabled={load} className='mt-4 mx-auto hover:bg-[#9a57b3] bg-[#432F4A] text-white  font-thin rounded px-2'>
-              {load ? "Updating" : "UPDATE ACTIVITY"}
-            </button>
+            <button disabled={load} onClick={()=>setBlock(true)} className={`mt-4 mx-auto hover:bg-[#9a57b3] bg-[#432F4A] text-white font-normal rounded px-2 relative ${block ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+              {!block?"Update Activity":"Updating"}
+</button>
+
+
           </form>
         </div>
       </div>
